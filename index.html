@@ -108,6 +108,15 @@
   }
   body.pm .amount{background:var(--pm-accent);color:var(--pm-sky-2)}
   .amount:empty{display:none}
+  .watch{
+    display:inline-flex;align-items:center;gap:7px;
+    font-weight:700;font-size:14px;letter-spacing:.02em;
+    color:inherit;text-decoration:none;
+    border:2px solid currentColor;border-radius:99px;padding:8px 16px;
+  }
+  .watch b{font-weight:700}
+  .watchrow{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .watchtitle{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
 
   /* ---------- controls ---------- */
   .controls{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -193,17 +202,17 @@ const IMG = {
 /* ---------------- timeline: ~60s total ---------------- */
 const steps = [
   {phase:"intro", dur:3.5, icon:I.check, img:"iphonetimer", num:"Every single day",
-   title:"Your 5-minute routine", how:"Morning + night. Set a timer and go.", amount:""},
+   title:"Your 5-minute routine", how:"Morning + night. Set a timer and go.", amount:"", videos:[{url:"https://www.tiktok.com/@drspf/video/7639553491844844830",label:"Routine overview"}]},
 
   // -------- AM --------
   {phase:"am", n:1, dur:4.5, icon:I.wash, img:"panoxyl", num:"Morning \u00b7 Step 1",
-   title:"PanOxyl Gel Wash", how:"Massage on. Set a 2-minute timer. Let it sit.", amount:"\u23f1 2 min on skin"},
+   title:"PanOxyl Gel Wash", how:"Massage on. Set a 2-minute timer. Let it sit.", amount:"\u23f1 2 min on skin", videos:[{url:"https://www.instagram.com/reel/DF5VNo5R61v/?hl=en",label:"Leave it on 1\u20132 minutes"},{url:"https://www.tiktok.com/@drspf/video/7196819019276766510?lang=en",label:"PanOxyl explained"}]},
   {phase:"am", dur:3.5, icon:I.timer, img:"toothpaste", num:"Morning \u00b7 While you wait",
    title:"Brush your teeth", how:"Just enough time to brush your teeth. Timer buzzes? Rinse well.", amount:"\u23f1 2 min"},
   {phase:"am", n:2, dur:4, icon:I.drops, img:"ordinary", num:"Morning \u00b7 Step 2",
-   title:"The Ordinary Niacinamide", how:"Spread over your whole face.", amount:"2\u20133 drops"},
+   title:"The Ordinary Niacinamide", how:"Spread over your whole face.", amount:"2\u20133 drops", videos:[{url:"https://www.tiktok.com/@drspf/video/7371997831323733290",label:"Don\u2019t overdo it \u2014 why 2\u20133 drops"},{url:"https://www.tiktok.com/@drspf/video/7578984438751661342",label:"Niacinamide explained"}]},
   {phase:"am", n:3, dur:4.5, icon:I.dab, img:"neutrogena", num:"Morning \u00b7 Step 3",
-   title:"Neutrogena Stubborn Acne", how:"Thin layer on breakout zones. Skip eyes, lips, nostrils.", amount:"Thin layer"},
+   title:"Neutrogena Stubborn Acne", how:"Thin layer on breakout zones. Skip eyes, lips, nostrils.", amount:"Thin layer", videos:[{url:"https://www.tiktok.com/@drspf/video/6916209290835512582",label:"Benzoyl peroxide explained"}]},
   {phase:"am", n:4, dur:4, icon:I.lotion, img:"lubriderm", num:"Morning \u00b7 Step 4",
    title:"Lubriderm", how:"Light layer everywhere. Locks in moisture.", amount:"Dime size"},
 
@@ -211,20 +220,20 @@ const steps = [
   {phase:"pm", n:1, dur:4.5, icon:I.moonwash, img:"cetaphil", num:"Night \u00b7 Step 1",
    title:"Cetaphil cleanser", how:"Wash the whole day off. Rinse well.", amount:""},
   {phase:"pm", n:2, dur:4, icon:I.towel, img:"papertowel", num:"Night \u00b7 Step 2",
-   title:"Pat dry", how:"Clean paper towel. Pat \u2014 don't rub.", amount:""},
+   title:"Pat dry", how:"Clean paper towel. Pat \u2014 don't rub.", amount:"", videos:[{url:"https://www.tiktok.com/@drspf/video/7384481871867972906",label:"Why paper towels?"}]},
   {phase:"pm", n:3, dur:4, icon:I.lotion, img:"lubriderm", num:"Night \u00b7 Step 3",
    title:"Lubriderm first", how:"Thin layer over your whole face.", amount:"Thin layer"},
   {phase:"pm", dur:4.5, icon:I.game, img:"gamer", num:"Night \u00b7 In between",
    title:"Wait 5\u201310 minutes", how:"Until skin is fully dry. Squeeze in a quick game.", amount:"\u23f1 5\u201310 min"},
   {phase:"pm", n:4, dur:5.5, icon:I.pea, img:"differin", num:"Night \u00b7 Step 4",
-   title:"Differin gel", how:"One pea covers your whole face. Skip eyelids, lips, nose corners.", amount:"Pea size"},
+   title:"Differin gel", how:"One pea covers your whole face. Skip eyelids, lips, nose corners.", amount:"Pea size", videos:[{url:"https://www.youtube.com/shorts/jhzWeX8fz2o",label:"Must-watch: the retinoid sandwich"},{url:"https://www.youtube.com/shorts/gZoMSOxcgEA",label:"Pea-size: YouTube"},{url:"https://www.instagram.com/reel/DImVoXEzDXU/?hl=en",label:"Pea-size: Instagram"}]},
   {phase:"pm", dur:4.5, icon:I.wait, img:"dragon", num:"Night \u00b7 In between",
-   title:"Wait 10\u201315 minutes", how:"Let Differin absorb. Brush your teeth \u2014 or go feed the dragon.", amount:"\u23f1 10\u201315 min"},
+   title:"Wait 10\u201315 minutes", how:"Let Differin absorb. Brush your teeth \u2014 or go feed the dragon.", amount:"\u23f1 10\u201315 min", videos:[{url:"https://www.youtube.com/shorts/tlWNggiDvrw",label:"Why retinoids sting at first"}]},
   {phase:"pm", n:5, dur:4, icon:I.lotion, img:"lubriderm", num:"Night \u00b7 Step 5",
    title:"Feeling dry?", how:"One more light layer of Lubriderm seals in moisture.", amount:"Optional"},
 
   {phase:"outro", dur:5, icon:I.party, num:"You did it! \ud83c\udf8a",
-   title:"Consistency wins", how:"Dry or flaky at first? Normal \u2014 add Lubriderm at night. Red or burning? Tell me so we can adjust.", amount:"See you tomorrow"}
+   title:"Consistency wins", how:"Dry or flaky at first? Normal \u2014 add Lubriderm at night. Red or burning? Tell me and we\u2019ll get you a stronger moisturizer.", amount:"See you tomorrow", videos_title:"Additional resources", videos:[{url:"https://www.youtube.com/shorts/tlWNggiDvrw",label:"Why skin gets dry at first"},{url:"https://www.youtube.com/shorts/y1WzbnRbP-M",label:"Full routine explained"},{url:"https://www.tiktok.com/@drspf/video/7608045080741547295",label:"More on niacinamide"}]}
 ];
 
 const TOTAL = steps.reduce((s,x)=>s+x.dur,0);
@@ -258,7 +267,8 @@ function render(){
     '<div class="icon">'+(s.img?('<img src="'+IMG[s.img]+'" alt="">'):s.icon)+'</div>'+
     '<div class="title">'+s.title+'</div>'+
     '<div class="how">'+s.how+'</div>'+
-    '<div class="amount">'+s.amount+'</div>';
+    '<div class="amount">'+s.amount+'</div>'+
+    (s.videos?('<div class="watchrow">'+(s.videos_title?('<div class="watchtitle">'+s.videos_title+'</div>'):'')+s.videos.map(v=>'<a class="watch" href="'+v.url+'" target="_blank" rel="noopener">\u25b6 '+v.label+'</a>').join('')+'</div>'):'');
   [...dots.children].forEach((d,i)=>d.classList.toggle('done', i<=idx));
   hint.textContent = paused ? "Paused — tap card to play" : "Tap card to pause";
 }
@@ -284,7 +294,8 @@ function goTo(i,t){
   render();
 }
 
-card.addEventListener('click',()=>{ 
+card.addEventListener('click',(e)=>{ 
+  if(e.target.closest('.watch')){ paused=true; render(); return; }
   if(idx===steps.length-1 && paused && clock.textContent==="0:00"){ return; }
   paused=!paused;
   if(!paused){ stepStart=performance.now(); elapsedBefore=steps.slice(0,idx).reduce((s,x)=>s+x.dur,0); }
